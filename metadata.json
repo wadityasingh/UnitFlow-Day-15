@@ -1,6 +1,0 @@
-{
-  "name": "UnitFlow — Unit Converter",
-  "description": "A simple, accurate tool for converting length and weight units instantly.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
