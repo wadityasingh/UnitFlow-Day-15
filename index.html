@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UnitFlow — Unit Converter</title>
+    <meta
+      name="description"
+      content="A simple, accurate tool for converting length and weight units instantly."
+    />
+    <meta property="og:title" content="UnitFlow — Unit Converter" />
+    <meta
+      property="og:description"
+      content="A simple, accurate tool for converting length and weight units instantly."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Compact Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#converter" class="brand" aria-label="UnitFlow Unit Converter Home">
+          <span class="brand-icon" aria-hidden="true">
+            <span class="css-arrow css-arrow-right"></span>
+            <span class="css-arrow css-arrow-left"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">UnitFlow</span>
+            <span class="brand-divider" aria-hidden="true">·</span>
+            <span class="brand-descriptor">Unit Converter</span>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#converter" class="nav-link">Converter</a>
+          <a href="#supported-units" class="nav-link">Supported Units</a>
+          <a href="#about" class="nav-link">About</a>
+        </nav>
+
+        <div class="header-status" aria-live="polite">
+          <span class="status-indicator" aria-hidden="true"></span>
+          <span class="status-text">Ready to convert</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container">
+          <p class="hero-kicker">
+            <span class="kicker-accent" aria-hidden="true"></span>
+            LENGTH &amp; WEIGHT CONVERTER
+          </p>
+          <h1 class="hero-title">Convert Units. Get Clear Results.</h1>
+          <p class="hero-description">
+            A simple, accurate tool for converting length and weight units instantly.
+          </p>
+        </div>
+      </section>
+
+      <!-- Main Converter Interface -->
+      <section id="converter" class="converter-section" aria-label="Unit Converter Tool">
+        <div class="container">
+          <div class="converter-card">
+            <!-- Category Tabs -->
+            <div class="category-bar">
+              <span class="category-label" id="category-group-label">Conversion Category</span>
+              <div
+                class="category-tabs"
+                role="tablist"
+                aria-labelledby="category-group-label"
+              >
+                <button
+                  type="button"
+                  id="tab-length"
+                  class="category-tab active"
+                  role="tab"
+                  aria-selected="true"
+                  data-category="length"
+                >
+                  Length
+                </button>
+                <button
+                  type="button"
+                  id="tab-weight"
+                  class="category-tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-category="weight"
+                >
+                  Weight
+                </button>
+              </div>
+            </div>
+
+            <!-- Converter Form -->
+            <form id="converter-form" class="converter-form" novalidate>
+              <!-- Amount Input Group -->
+              <div class="form-group amount-group">
+                <div class="label-row">
+                  <label for="amount-input" class="field-label">Enter value</label>
+                  <span id="base-unit-badge" class="field-hint">Base unit: Meter (m)</span>
+                </div>
+                <div class="input-wrapper">
+                  <input
+                    type="number"
+                    id="amount-input"
+                    name="amount"
+                    class="amount-input"
+                    value="1"
+                    min="0"
+                    step="any"
+                    inputmode="decimal"
+                    placeholder="Enter a non-negative number"
+                    aria-describedby="validation-message"
+                    autocomplete="off"
+                  />
+                  <span id="input-unit-tag" class="input-unit-code" aria-hidden="true">m</span>
+                </div>
+                <p
+                  id="validation-message"
+                  class="validation-message"
+                  role="alert"
+                  aria-live="polite"
+                  hidden
+                ></p>
+              </div>
+
+              <!-- From / Swap / To Controls -->
+              <div class="unit-selection-grid">
+                <!-- From Dropdown -->
+                <div class="form-group select-group">
+                  <label for="from-unit" class="field-label">From</label>
+                  <div class="select-wrapper">
+                    <select id="from-unit" name="fromUnit" class="unit-select"></select>
+                  </div>
+                </div>
+
+                <!-- Swap Button -->
+                <div class="swap-control">
+                  <button
+                    type="button"
+                    id="swap-btn"
+                    class="swap-btn"
+                    aria-label="Swap From and To units"
+                    title="Swap From and To units"
+                  >
+                    <span class="swap-icon" aria-hidden="true">
+                      <span class="css-arrow css-arrow-right"></span>
+                      <span class="css-arrow css-arrow-left"></span>
+                    </span>
+                    <span class="swap-btn-text">Swap</span>
+                  </button>
+                </div>
+
+                <!-- To Dropdown -->
+                <div class="form-group select-group">
+                  <label for="to-unit" class="field-label">To</label>
+                  <div class="select-wrapper">
+                    <select id="to-unit" name="toUnit" class="unit-select"></select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Result Section -->
+              <div class="result-panel" aria-live="polite" aria-atomic="true">
+                <div class="result-main">
+                  <span class="result-kicker">Converted Result</span>
+                  <div class="result-value-row">
+                    <output id="result-value" class="result-number" for="amount-input from-unit to-unit">
+                      3.28084
+                    </output>
+                    <span id="result-unit" class="result-unit-name">Feet (ft)</span>
+                  </div>
+                  <p id="conversion-formula" class="result-formula">
+                    1 Meter (m) = 3.28084 Feet (ft)
+                  </p>
+                </div>
+
+                <div class="result-actions">
+                  <div class="action-buttons">
+                    <button type="button" id="copy-btn" class="btn btn-primary">
+                      Copy Result
+                    </button>
+                    <button type="button" id="reset-btn" class="btn btn-secondary">
+                      Reset
+                    </button>
+                  </div>
+                  <span
+                    id="copy-feedback"
+                    class="copy-feedback"
+                    role="status"
+                    aria-live="polite"
+                  ></span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Supported Units Section -->
+      <section id="supported-units" class="supported-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Supported Units</h2>
+            <p class="section-subtitle">
+              Standard metric and imperial units calculated via exact base-unit conversion factors.
+            </p>
+          </div>
+
+          <div class="units-list-wrapper">
+            <div class="unit-group-row">
+              <div class="unit-group-meta">
+                <h3 class="unit-group-title">Length</h3>
+                <span class="unit-group-base">Base: Meter (m)</span>
+              </div>
+              <div class="unit-group-items">
+                <p class="unit-codes-line">
+                  <strong>mm</strong> <span class="unit-name-muted">(Millimeter)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>cm</strong> <span class="unit-name-muted">(Centimeter)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>m</strong> <span class="unit-name-muted">(Meter)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>km</strong> <span class="unit-name-muted">(Kilometer)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>in</strong> <span class="unit-name-muted">(Inch)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>ft</strong> <span class="unit-name-muted">(Foot)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>yd</strong> <span class="unit-name-muted">(Yard)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>mi</strong> <span class="unit-name-muted">(Mile)</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="unit-group-row">
+              <div class="unit-group-meta">
+                <h3 class="unit-group-title">Weight</h3>
+                <span class="unit-group-base">Base: Kilogram (kg)</span>
+              </div>
+              <div class="unit-group-items">
+                <p class="unit-codes-line">
+                  <strong>mg</strong> <span class="unit-name-muted">(Milligram)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>g</strong> <span class="unit-name-muted">(Gram)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>kg</strong> <span class="unit-name-muted">(Kilogram)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>t</strong> <span class="unit-name-muted">(Metric tonne)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>oz</strong> <span class="unit-name-muted">(Ounce)</span>
+                  <span class="sep" aria-hidden="true">·</span>
+                  <strong>lb</strong> <span class="unit-name-muted">(Pound)</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="steps-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+          </div>
+
+          <ol class="steps-list">
+            <li class="step-item">
+              <span class="step-number" aria-hidden="true">1</span>
+              <div class="step-content">
+                <h3 class="step-heading">Enter a value.</h3>
+                <p class="step-text">
+                  Type any whole number or decimal amount into the value field.
+                </p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number" aria-hidden="true">2</span>
+              <div class="step-content">
+                <h3 class="step-heading">Select the source and destination units.</h3>
+                <p class="step-text">
+                  Choose Length or Weight, pick your From and To units, or click Swap to reverse them.
+                </p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number" aria-hidden="true">3</span>
+              <div class="step-content">
+                <h3 class="step-heading">View or copy the converted result.</h3>
+                <p class="step-text">
+                  Results update live as you type and can be copied with one click.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about-section">
+        <div class="container">
+          <div class="about-box">
+            <h2 class="section-title">About UnitFlow</h2>
+            <p class="about-text">
+              UnitFlow is a lightweight utility built for quick length and weight conversions.
+              Every calculation converts the input into a common standard base unit first—meters
+              for length and kilograms for weight—before converting to the target unit, ensuring
+              consistent accuracy across metric and imperial measurements.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-primary">UnitFlow | Built with HTML5, CSS3 &amp; JavaScript</p>
+        <p class="footer-secondary">Day 15 · Web Development Internship Project</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
