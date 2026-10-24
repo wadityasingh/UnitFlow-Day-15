@@ -1,6 +1,4 @@
 # UnitFlow — Length & Weight Unit Converter
-
-> **Task:** Day 15 | Level 1  
 > **Program:** Veda Technology Web Development Internship  
 > **Tech Stack:** HTML5 · CSS3 · Vanilla JavaScript (No frameworks or external libraries)
 
@@ -92,13 +90,9 @@ $$\text{Final Result} = \frac{\text{Value in Base}}{\text{Target Unit Factor}}$$
 
 ### Option 1: Direct Browser Opening (No server needed)
 1. Clone or download the repository.
-2. Double-click `index.html` or open it with any web browser (Chrome, Edge, Firefox, Safari).
+2. Double-click `index.html` or open it with any web browser (Chrome, Edge, Firefox, Safari)
 
-### Option 2: Live Server (VS Code)
-1. Open the project folder in VS Code.
-2. Right-click `index.html` and select **"Open with Live Server"**.
-
-### Option 3: GitHub Pages Deployment
+### Option 2: GitHub Pages Deployment
 1. Push `index.html`, `style.css`, and `script.js` to your GitHub repository.
 2. Go to **Settings** > **Pages**.
 3. Under **Branch**, select `main` (or `master`) and `/ (root)`.
@@ -116,5 +110,5 @@ $$\text{Final Result} = \frac{\text{Value in Base}}{\text{Target Unit Factor}}$$
 
 ## 📜 License & Credits
 
-- Developed for **Veda Technology Web Development Internship — Day 15 (Level 1)**.
+- Developed for **Veda Technology Web Development Internship**.
 - Built using **HTML5, CSS3, and JavaScript**.
